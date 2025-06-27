@@ -54,6 +54,12 @@
     <ClCompile Include="..\mission2\Steering.cpp">
       <Filter>mission2</Filter>
     </ClCompile>
+    <ClCompile Include="..\mission2\car_test.cpp">
+      <Filter>테스트 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mission2\steering_test.cpp">
+      <Filter>테스트 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\mission2\Engine.h">

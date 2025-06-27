@@ -130,11 +130,13 @@
     <ClCompile Include="..\mission2\BreakSystem.cpp" />
     <ClCompile Include="..\mission2\breaksystem_test.cpp" />
     <ClCompile Include="..\mission2\Car.cpp" />
+    <ClCompile Include="..\mission2\car_test.cpp" />
     <ClCompile Include="..\mission2\Engine.cpp" />
     <ClCompile Include="..\mission2\engine_test.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <ClCompile Include="..\mission2\Steering.cpp" />
+    <ClCompile Include="..\mission2\steering_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\mission2\BreakSystem.h" />
