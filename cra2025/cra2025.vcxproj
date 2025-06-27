@@ -126,8 +126,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\mission1\assemble_method_refactoring.cpp" />
     <ClCompile Include="..\mission2\assemble_class_refactoring.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mission2\BreakSystem.h" />
+    <ClInclude Include="..\mission2\Car.h" />
+    <ClInclude Include="..\mission2\Engine.h" />
+    <ClInclude Include="..\mission2\Steering.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

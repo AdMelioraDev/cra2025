@@ -24,8 +24,28 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\mission1\assemble_method_refactoring.cpp">
-      <Filter>mission1</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc">
+      <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mission2\assemble_class_refactoring.cpp">
+      <Filter>mission2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mission2\Engine.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mission2\Car.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mission2\BreakSystem.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mission2\Steering.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

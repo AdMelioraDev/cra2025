@@ -1,4 +1,5 @@
-#ifdef _DEBUG
+//#ifdef _DEBUG
+#if 0
 
 #include "gmock/gmock.h"
 
@@ -13,6 +14,11 @@ int main()
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include "Engine.h"
+#include "Car.h"
+#include "BreakSystem.h"
+#include "Steering.h"
 
 #define CLEAR_SCREEN "\033[H\033[2J"
 
@@ -38,33 +44,6 @@ enum QuestionType
     Run_Test,
 };
 
-enum CarType
-{
-    SEDAN = 1,
-    SUV,
-    TRUCK
-};
-
-enum Engine
-{
-    GM = 1,
-    TOYOTA,
-    WIA
-};
-
-enum brakeSystem
-{
-    MANDO = 1,
-    CONTINENTAL,
-    BOSCH_B
-};
-
-enum SteeringSystem
-{
-    BOSCH_S = 1,
-    MOBIS
-};
-
 void delay(int ms)
 {
     volatile int sum = 0;
@@ -84,6 +63,12 @@ int main()
 {
     char buf[100];
     int step = CarType_Q;
+
+    CarFactory carFactory{};
+    EngineFactory engineFactory{};
+    BreakSystemFactory breakFactory{};
+    SteeringFactory steeringFactory{};
+    ICar* mycar = nullptr;
 
     while (1)
     {
@@ -183,25 +168,30 @@ int main()
 
         if (step == CarType_Q)
         {
-            selectCarType(answer);
+            //selectCarType(answer);
+
+            mycar = carFactory.getCar(static_cast<CarType>(answer));
             delay(800);
             step = Engine_Q;
         }
         else if (step == Engine_Q)
         {
-            selectEngine(answer);
+            //selectEngine(answer);
+            mycar->addEngine(engineFactory.getEngine(static_cast<Engine>(answer)));
             delay(800);
             step = brakeSystem_Q;
         }
         else if (step == brakeSystem_Q)
         {
-            selectbrakeSystem(answer);
+            //selectbrakeSystem(answer);
+            mycar->addBreakSystem(breakFactory.getBreakSystem(static_cast<brakeSystem>(answer)));
             delay(800);
             step = SteeringSystem_Q;
         }
         else if (step == SteeringSystem_Q)
         {
-            selectSteeringSystem(answer);
+            //selectSteeringSystem(answer);
+            mycar->addSteering(steeringFactory.getSteering(static_cast<SteeringSystem>(answer)));
             delay(800);
             step = Run_Test;
         }
