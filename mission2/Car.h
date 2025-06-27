@@ -17,7 +17,6 @@ enum CarType
 class ICar
 {
 public:
-	virtual CarType getType() = 0;
 	virtual std::string getName() = 0;
 	virtual void addEngine(IEngine* engine) = 0;
 	virtual void addBreakSystem(IBreakSystem* break_system) = 0;
@@ -31,7 +30,6 @@ public:
 class Sedan : public ICar
 {
 public:
-	CarType getType(void) override;;
 	std::string getName() override;;
 	void addEngine(IEngine* engine) override;;
 	void addBreakSystem(IBreakSystem* break_system) override;;
@@ -42,7 +40,6 @@ public:
 	void test() override;;
 
 private:
-	CarType _type{ SEDAN };
 	IEngine* _engine{ nullptr };
 	IBreakSystem* _break{ nullptr };
 	ISteering* _steering{ nullptr };
@@ -52,7 +49,6 @@ class Suv : public ICar
 {
 public:
 	std::string getName() override;
-	CarType getType(void) override;
 	void addEngine(IEngine* engine) override;
 	void addBreakSystem(IBreakSystem* break_system) override;
 	void addSteering(ISteering* steering) override;
@@ -62,7 +58,6 @@ public:
 	void test() override;
 
 private:
-	CarType _type{ SUV };
 	IEngine* _engine{ nullptr };
 	IBreakSystem* _break{ nullptr };
 	ISteering* _steering{ nullptr };
@@ -72,7 +67,6 @@ class Truck : public ICar
 {
 public:
 	std::string getName() override;
-	CarType getType(void) override;
 	void addEngine(IEngine* engine) override;
 	void addBreakSystem(IBreakSystem* break_system) override;
 	void addSteering(ISteering* steering) override;
@@ -82,7 +76,6 @@ public:
 	void test() override;
 
 private:
-	CarType _type{ TRUCK };
 	IEngine* _engine{ nullptr };
 	IBreakSystem* _break{ nullptr };
 	ISteering* _steering{ nullptr };

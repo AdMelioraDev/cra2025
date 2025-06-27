@@ -3,11 +3,6 @@
 
 #include "Car.h"
 
-
-CarType Sedan::getType(void)
-{
-	return _type;
-}
 std::string Sedan::getName()
 {
 	return std::string("Sedan");
@@ -69,10 +64,6 @@ std::string Suv::getName()
 {
 	return std::string("SUV");
 }
-CarType Suv::getType(void)
-{
-	return _type;
-}
 void Suv::addEngine(IEngine* engine)
 {
 	_engine = engine;
@@ -130,10 +121,6 @@ void Suv::test()
 std::string Truck::getName()
 {
 	return std::string("Truck");
-}
-CarType Truck::getType(void)
-{
-	return _type;
 }
 void Truck::addEngine(IEngine* engine)
 {

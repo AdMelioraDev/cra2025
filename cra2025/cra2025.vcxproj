@@ -139,10 +139,13 @@
     <ClCompile Include="..\mission2\steering_test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\mission2\BrakeSystemMock.h" />
     <ClInclude Include="..\mission2\BreakSystem.h" />
     <ClInclude Include="..\mission2\Car.h" />
     <ClInclude Include="..\mission2\Engine.h" />
+    <ClInclude Include="..\mission2\EngineMock.h" />
     <ClInclude Include="..\mission2\Steering.h" />
+    <ClInclude Include="..\mission2\SteeringMock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

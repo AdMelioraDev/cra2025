@@ -18,10 +18,6 @@
     <Filter Include="테스트 파일">
       <UniqueIdentifier>{1ee650fa-c295-40ad-a5cf-e12e51393088}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mission2\리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -72,6 +68,15 @@
       <Filter>mission2</Filter>
     </ClInclude>
     <ClInclude Include="..\mission2\Steering.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mission2\EngineMock.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mission2\BrakeSystemMock.h">
+      <Filter>mission2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mission2\SteeringMock.h">
       <Filter>mission2</Filter>
     </ClInclude>
   </ItemGroup>
