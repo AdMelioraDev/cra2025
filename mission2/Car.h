@@ -22,6 +22,8 @@ public:
 	virtual void addEngine(IEngine* engine) = 0;
 	virtual void addBreakSystem(IBreakSystem* break_system) = 0;
 	virtual void addSteering(ISteering* steering) = 0;
+	virtual bool isValidCheck() = 0;
+	virtual bool isEngineBroken() = 0;
 };
 
 class Sedan : public ICar
@@ -46,6 +48,22 @@ public:
 	void addSteering(ISteering* steering) override
 	{
 		_steering = steering;
+	}
+	bool isValidCheck() override
+	{
+		if (_break->getType() == CONTINENTAL)
+		{
+			return false;
+		}
+		else if (_break->getType() == BOSCH_B && _steering->getType() != BOSCH_S)
+		{
+			return false;
+		}
+		return true;
+	}
+	bool isEngineBroken() override
+	{
+		return (_engine->getType() == BROKEN);
 	}
 
 private:
@@ -78,6 +96,22 @@ public:
 	{
 		_steering = steering;
 	}
+	bool isValidCheck() override
+	{
+		if (_engine->getType() == TOYOTA)
+		{
+			return false;
+		}
+		else if (_break->getType() == BOSCH_B && _steering->getType() != BOSCH_S)
+		{
+			return false;
+		}
+		return true;
+	}
+	bool isEngineBroken() override
+	{
+		return (_engine->getType() == BROKEN);
+	}
 
 private:
 	CarType _type{ SUV };
@@ -108,6 +142,27 @@ public:
 	void addSteering(ISteering* steering) override
 	{
 		_steering = steering;
+	}
+	bool isValidCheck() override
+	{
+		if (_engine->getType() == WIA)
+		{
+			return false;
+		}
+		else if (_break->getType() == MANDO)
+		{
+			return false;
+		}
+		else if (_break->getType() == BOSCH_B && _steering->getType() != BOSCH_S)
+		{
+			return false;
+		}
+
+		return true;
+	}
+	bool isEngineBroken() override
+	{
+		return (_engine->getType() == BROKEN);
 	}
 
 private:

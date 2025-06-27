@@ -13,6 +13,7 @@ class ISteering
 {
 public:
 	virtual std::string getName() = 0;
+	virtual SteeringSystem getType() = 0;
 };
 
 class BoschSteering : public ISteering
@@ -22,6 +23,10 @@ public:
 	{
 		return std::string("BOSCH");
 	}
+	SteeringSystem getType() override
+	{
+		return BOSCH_S;
+	}
 };
 
 class MobisSteering : public ISteering
@@ -30,6 +35,10 @@ public:
 	std::string getName(void) override
 	{
 		return std::string("MOBIS");
+	}
+	SteeringSystem getType() override
+	{
+		return MOBIS;
 	}
 };
 

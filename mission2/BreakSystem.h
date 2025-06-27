@@ -14,6 +14,7 @@ class IBreakSystem
 {
 public:
 	virtual std::string getName() = 0;
+	virtual brakeSystem getType() = 0;
 };
 
 class MandoBreak : public IBreakSystem
@@ -22,6 +23,10 @@ public:
 	std::string getName(void) override
 	{
 		return std::string("MANDO");
+	}
+	brakeSystem getType(void) override
+	{
+		return MANDO;
 	}
 };
 
@@ -32,6 +37,10 @@ public:
 	{
 		return std::string("CONTINENTAL");
 	}
+	brakeSystem getType(void) override
+	{
+		return CONTINENTAL;
+	}
 };
 
 class BoschBreak : public IBreakSystem
@@ -40,6 +49,10 @@ public:
 	std::string getName(void) override
 	{
 		return std::string("BOSCH");
+	}
+	brakeSystem getType(void) override
+	{
+		return BOSCH_B;
 	}
 };
 

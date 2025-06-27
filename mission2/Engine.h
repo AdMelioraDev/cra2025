@@ -7,13 +7,15 @@ enum Engine
 {
 	GM = 1,
 	TOYOTA,
-	WIA
+	WIA,
+	BROKEN
 };
 
 class IEngine
 {
 public:
 	virtual std::string getName() = 0;
+	virtual Engine getType() = 0;
 };
 
 class GmEngine : public IEngine
@@ -22,6 +24,10 @@ public:
 	std::string getName(void) override
 	{
 		return std::string("GM");
+	}
+	Engine getType() override
+	{
+		return GM;
 	}
 };
 
@@ -32,6 +38,10 @@ public:
 	{
 		return std::string("TOYOTA");
 	}
+	Engine getType() override
+	{
+		return TOYOTA;
+	}
 };
 
 class WiaEngine : public IEngine
@@ -40,6 +50,23 @@ public:
 	std::string getName(void) override
 	{
 		return std::string("WIA");
+	}
+	Engine getType() override
+	{
+		return WIA;
+	}
+};
+
+class BrokenEngine : public IEngine
+{
+public:
+	std::string getName(void) override
+	{
+		return std::string("고장난");
+	}
+	Engine getType() override
+	{
+		return BROKEN;
 	}
 };
 
@@ -60,6 +87,8 @@ public:
 		case WIA:
 			engine = new WiaEngine;
 			break;
+		case BROKEN:
+			engine = new BrokenEngine();
 		default:
 			break;
 		}

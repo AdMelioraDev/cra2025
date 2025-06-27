@@ -28,7 +28,7 @@ void selectCarType(int answer);
 void selectEngine(int answer);
 void selectbrakeSystem(int answer);
 void selectSteeringSystem(int answer);
-void runProducedCar();
+void runProducedCar(ICar* car);
 void testProducedCar();
 void delay(int ms);
 bool checkInvalidAnswer(int step, int answer);
@@ -197,7 +197,7 @@ int main()
         }
         else if (step == Run_Test && answer == 1)
         {
-            runProducedCar();
+            runProducedCar(mycar);
             delay(2000);
         }
         else if (step == Run_Test && answer == 2)
@@ -348,15 +348,15 @@ int isValidCheck()
     return true;
 }
 
-void runProducedCar()
+void runProducedCar(ICar* car)
 {
-    if (isValidCheck() == false)
+    if (car->isValidCheck() == false)
     {
         printf("자동차가 동작되지 않습니다\n");
     }
     else
     {
-        if (stack[Engine_Q] == 4)
+        if (car->isEngineBroken())
         {
             printf("엔진이 고장나있습니다.\n");
             printf("자동차가 움직이지 않습니다.\n");
