@@ -13,8 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="mission1">
+      <UniqueIdentifier>{1b07d1bc-daf0-4bd9-ac31-d32d57365878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mission2">
+      <UniqueIdentifier>{d2e07168-120f-4693-b99f-23988223f550}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\mission1\assemble_method_refactoring.cpp">
+      <Filter>mission1</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
