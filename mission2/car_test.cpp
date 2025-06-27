@@ -215,6 +215,24 @@ TEST_F(CarTest, isEngineBrokenForTruckTrue)
     EXPECT_EQ(car->isEngineBroken(), true);
 }
 
+TEST_F(CarTest, isValidCheckForTruckReturnFalseForUnmatch)
+{
+    ICar* car = factory.getCar(TRUCK);
+    EngineMock engine_mock;
+    BrakeSysteMock brake_mock;
+    SteeringMock steering_mock;
+
+    car->addEngine(&engine_mock);
+    car->addBreakSystem(&brake_mock);
+    car->addSteering(&steering_mock);
+
+    EXPECT_CALL(engine_mock, getType).Times(1).WillOnce(testing::Return(GM));
+    EXPECT_CALL(brake_mock, getType).Times(2).WillRepeatedly(testing::Return(BOSCH_B));
+    EXPECT_CALL(steering_mock, getType).Times(1).WillOnce(testing::Return(MOBIS));
+
+    EXPECT_EQ(car->isValidCheck(), false);
+}
+
 TEST_F(CarTest, PrintTestForTruck)
 {
     ICar* car = factory.getCar(TRUCK);
