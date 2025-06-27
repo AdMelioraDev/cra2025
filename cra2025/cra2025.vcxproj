@@ -127,6 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\mission2\assemble_class_refactoring.cpp" />
+    <ClCompile Include="..\mission2\Engine.cpp" />
+    <ClCompile Include="..\mission2\engine_test.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\mission2\BreakSystem.h" />

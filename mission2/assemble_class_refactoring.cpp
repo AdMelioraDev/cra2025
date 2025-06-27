@@ -1,7 +1,7 @@
-//#ifdef _DEBUG
-#if 0
+#ifdef _DEBUG
 
 #include "gmock/gmock.h"
+#include "gtest/gtest.h"
 
 int main()
 {

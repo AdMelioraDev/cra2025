@@ -21,82 +21,33 @@ public:
 class GmEngine : public IEngine
 {
 public:
-	std::string getName(void) override
-	{
-		return std::string("GM");
-	}
-	Engine getType() override
-	{
-		return GM;
-	}
+	std::string getName() override;
+	Engine getType() override;
 };
 
 class ToyotaEngine : public IEngine
 {
 public:
-	std::string getName(void) override
-	{
-		return std::string("TOYOTA");
-	}
-	Engine getType() override
-	{
-		return TOYOTA;
-	}
+	std::string getName() override;
+	Engine getType() override;
 };
 
 class WiaEngine : public IEngine
 {
 public:
-	std::string getName(void) override
-	{
-		return std::string("WIA");
-	}
-	Engine getType() override
-	{
-		return WIA;
-	}
+	std::string getName() override;
+	Engine getType() override;
 };
 
 class BrokenEngine : public IEngine
 {
 public:
-	std::string getName(void) override
-	{
-		return std::string("고장난");
-	}
-	Engine getType() override
-	{
-		return BROKEN;
-	}
+	std::string getName(void) override;
+	Engine getType() override;
 };
 
 class EngineFactory
 {
 public:
-	IEngine* getEngine(Engine engine_type)
-	{
-		IEngine* engine = nullptr;
-		switch (engine_type)
-		{
-		case GM:
-			engine = new GmEngine();
-			break;
-		case TOYOTA:
-			engine = new ToyotaEngine();
-			break;
-		case WIA:
-			engine = new WiaEngine;
-			break;
-		case BROKEN:
-			engine = new BrokenEngine();
-		default:
-			break;
-		}
-
-		if (engine != nullptr)
-		{
-			std::cout << engine->getName() << " 엔진을 선택하셨습니다." << std::endl;
-		}
-		return engine;
-	}
+	IEngine* getEngine(Engine engine_type);
 };
