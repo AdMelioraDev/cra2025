@@ -25,6 +25,7 @@ void selectSteeringSystem(int answer);
 void runProducedCar();
 void testProducedCar();
 void delay(int ms);
+bool checkInvalidAnswer(int step, int answer);
 
 enum QuestionType
 {
@@ -164,37 +165,8 @@ int main()
             continue;
         }
 
-        if (step == CarType_Q && !(answer >= 1 && answer <= 3))
+        if (checkInvalidAnswer(step, answer))
         {
-            printf("ERROR :: 차량 타입은 1 ~ 3 범위만 선택 가능\n");
-            delay(800);
-            continue;
-        }
-
-        if (step == Engine_Q && !(answer >= 0 && answer <= 4))
-        {
-            printf("ERROR :: 엔진은 1 ~ 4 범위만 선택 가능\n");
-            delay(800);
-            continue;
-        }
-
-        if (step == brakeSystem_Q && !(answer >= 0 && answer <= 3))
-        {
-            printf("ERROR :: 제동장치는 1 ~ 3 범위만 선택 가능\n");
-            delay(800);
-            continue;
-        }
-
-        if (step == SteeringSystem_Q && !(answer >= 0 && answer <= 2))
-        {
-            printf("ERROR :: 조향장치는 1 ~ 2 범위만 선택 가능\n");
-            delay(800);
-            continue;
-        }
-
-        if (step == Run_Test && !(answer >= 0 && answer <= 2))
-        {
-            printf("ERROR :: Run 또는 Test 중 하나를 선택 필요\n");
             delay(800);
             continue;
         }
@@ -250,6 +222,41 @@ int main()
             delay(2000);
         }
     }
+}
+
+bool checkInvalidAnswer(int step, int answer)
+{
+    if (step == CarType_Q && !(answer >= 1 && answer <= 3))
+    {
+        printf("ERROR :: 차량 타입은 1 ~ 3 범위만 선택 가능\n");
+        return true;
+    }
+
+    if (step == Engine_Q && !(answer >= 0 && answer <= 4))
+    {
+        printf("ERROR :: 엔진은 1 ~ 4 범위만 선택 가능\n");
+        return true;
+    }
+
+    if (step == brakeSystem_Q && !(answer >= 0 && answer <= 3))
+    {
+        printf("ERROR :: 제동장치는 1 ~ 3 범위만 선택 가능\n");
+        return true;
+    }
+
+    if (step == SteeringSystem_Q && !(answer >= 0 && answer <= 2))
+    {
+        printf("ERROR :: 조향장치는 1 ~ 2 범위만 선택 가능\n");
+        return true;
+    }
+
+    if (step == Run_Test && !(answer >= 0 && answer <= 2))
+    {
+        printf("ERROR :: Run 또는 Test 중 하나를 선택 필요\n");
+        return true;
+    }
+
+    return false;
 }
 
 void selectCarType(int answer)
