@@ -143,6 +143,40 @@ TEST_F(CarTest, isValidCheckForSuvReturnTrue)
     EXPECT_EQ(car->isValidCheck(), true);
 }
 
+TEST_F(CarTest, isValidCheckForSuvReturnFalseForToyota)
+{
+    ICar* car = factory.getCar(SUV);
+    EngineMock engine_mock;
+    BrakeSysteMock brake_mock;
+    SteeringMock steering_mock;
+
+    car->addEngine(&engine_mock);
+    car->addBreakSystem(&brake_mock);
+    car->addSteering(&steering_mock);
+
+    EXPECT_CALL(engine_mock, getType).Times(1).WillOnce(testing::Return(TOYOTA));
+
+    EXPECT_EQ(car->isValidCheck(), false);
+}
+
+TEST_F(CarTest, isValidCheckForSuvReturnFalseForUnmatch)
+{
+    ICar* car = factory.getCar(SUV);
+    EngineMock engine_mock;
+    BrakeSysteMock brake_mock;
+    SteeringMock steering_mock;
+
+    car->addEngine(&engine_mock);
+    car->addBreakSystem(&brake_mock);
+    car->addSteering(&steering_mock);
+
+    EXPECT_CALL(engine_mock, getType).Times(1).WillOnce(testing::Return(GM));
+    EXPECT_CALL(brake_mock, getType).Times(1).WillOnce(testing::Return(BOSCH_B));
+    EXPECT_CALL(steering_mock, getType).Times(1).WillOnce(testing::Return(MOBIS));
+
+    EXPECT_EQ(car->isValidCheck(), false);
+}
+
 TEST_F(CarTest, PrintTestForSuv)
 {
     ICar* car = factory.getCar(SUV);
