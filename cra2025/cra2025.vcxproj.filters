@@ -39,7 +39,19 @@
     <ClCompile Include="..\mission2\engine_test.cpp">
       <Filter>테스트 파일</Filter>
     </ClCompile>
+    <ClCompile Include="..\mission2\breaksystem_test.cpp">
+      <Filter>테스트 파일</Filter>
+    </ClCompile>
     <ClCompile Include="..\mission2\Engine.cpp">
+      <Filter>mission2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mission2\BreakSystem.cpp">
+      <Filter>mission2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mission2\Car.cpp">
+      <Filter>mission2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mission2\Steering.cpp">
       <Filter>mission2</Filter>
     </ClCompile>
   </ItemGroup>

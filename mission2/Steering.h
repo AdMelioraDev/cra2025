@@ -19,51 +19,19 @@ public:
 class BoschSteering : public ISteering
 {
 public:
-	std::string getName(void) override
-	{
-		return std::string("BOSCH");
-	}
-	SteeringSystem getType() override
-	{
-		return BOSCH_S;
-	}
+	std::string getName(void) override;
+	SteeringSystem getType() override;
 };
 
 class MobisSteering : public ISteering
 {
 public:
-	std::string getName(void) override
-	{
-		return std::string("MOBIS");
-	}
-	SteeringSystem getType() override
-	{
-		return MOBIS;
-	}
+	std::string getName(void) override;
+	SteeringSystem getType() override;
 };
 
 class SteeringFactory
 {
 public:
-	ISteering* getSteering(SteeringSystem steering_type)
-	{
-		ISteering* steering = nullptr;
-		switch (steering_type)
-		{
-		case BOSCH_S:
-			steering = new BoschSteering();
-			break;
-		case MOBIS:
-			steering = new MobisSteering();
-			break;
-		default:
-			break;
-		}
-
-		if (steering != nullptr)
-		{
-			std::cout << steering->getName() << " 조향장치를 선택하셨습니다." << std::endl;
-		}
-		return steering;
-	}
+	ISteering* getSteering(SteeringSystem steering_type);
 };
