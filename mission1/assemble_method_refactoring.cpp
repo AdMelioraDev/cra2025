@@ -26,6 +26,8 @@ void runProducedCar();
 void testProducedCar();
 void delay(int ms);
 bool checkInvalidAnswer(int step, int answer);
+bool IsUserSelectedGoBack(int answer);
+int goBackPrevousStep(int step);
 
 enum QuestionType
 {
@@ -171,17 +173,11 @@ int main()
             continue;
         }
 
-        // 처음으로 돌아가기
-        if (answer == 0 && step == Run_Test)
+        // 유저가 돌아가기를 선택했을 경우
+        if (IsUserSelectedGoBack(answer))
         {
-            step = CarType_Q;
-            continue;
-        }
-
-        // 이전으로 돌아가기
-        if (answer == 0 && step >= 1)
-        {
-            step -= 1;
+            step = goBackPrevousStep(step);
+            delay(800);
             continue;
         }
 
@@ -222,6 +218,16 @@ int main()
             delay(2000);
         }
     }
+}
+
+bool IsUserSelectedGoBack(int answer)
+{
+    return (answer == 0);
+}
+
+int goBackPrevousStep(int step)
+{
+    return (step == CarType_Q || step == Run_Test) ? CarType_Q : (step - 1);
 }
 
 bool checkInvalidAnswer(int step, int answer)
