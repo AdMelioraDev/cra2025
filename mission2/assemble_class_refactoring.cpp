@@ -24,10 +24,6 @@ int main()
 
 int stack[10];
 
-void selectCarType(int answer);
-void selectEngine(int answer);
-void selectbrakeSystem(int answer);
-void selectSteeringSystem(int answer);
 void runProducedCar(ICar* car);
 void testProducedCar(ICar* car);
 void delay(int ms);
@@ -168,29 +164,24 @@ int main()
 
         if (step == CarType_Q)
         {
-            //selectCarType(answer);
-
             mycar = carFactory.getCar(static_cast<CarType>(answer));
             delay(800);
             step = Engine_Q;
         }
         else if (step == Engine_Q)
         {
-            //selectEngine(answer);
             mycar->addEngine(engineFactory.getEngine(static_cast<Engine>(answer)));
             delay(800);
             step = brakeSystem_Q;
         }
         else if (step == brakeSystem_Q)
         {
-            //selectbrakeSystem(answer);
             mycar->addBreakSystem(breakFactory.getBreakSystem(static_cast<brakeSystem>(answer)));
             delay(800);
             step = SteeringSystem_Q;
         }
         else if (step == SteeringSystem_Q)
         {
-            //selectSteeringSystem(answer);
             mycar->addSteering(steeringFactory.getSteering(static_cast<SteeringSystem>(answer)));
             delay(800);
             step = Run_Test;
@@ -253,99 +244,6 @@ bool checkInvalidAnswer(int step, int answer)
     }
 
     return false;
-}
-
-void selectCarType(int answer)
-{
-    stack[CarType_Q] = answer;
-
-    switch (answer)
-    {
-    case SEDAN:
-        printf("차량 타입으로 Sedan을 선택하셨습니다.\n");
-        break;
-    case SUV:
-        printf("차량 타입으로 SUV을 선택하셨습니다.\n");
-        break;
-    case TRUCK:
-        printf("차량 타입으로 Truck을 선택하셨습니다.\n");
-        break;
-    default:
-        break;
-    }
-
-    return;
-}
-
-void selectEngine(int answer)
-{
-    stack[Engine_Q] = answer;
-
-    switch (answer)
-    {
-    case GM:
-        printf("GM 엔진을 선택하셨습니다.\n");
-        break;
-    case TOYOTA:
-        printf("TOYOTA 엔진을 선택하셨습니다.\n");
-        break;
-    case WIA:
-        printf("WIA 엔진을 선택하셨습니다.\n");
-        break;
-    default:
-        break;
-    }
-
-    return;
-}
-
-void selectbrakeSystem(int answer)
-{
-    stack[brakeSystem_Q] = answer;
-    if (answer == MANDO)
-        printf("MANDO 제동장치를 선택하셨습니다.\n");
-    else if (answer == CONTINENTAL)
-        printf("CONTINENTAL 제동장치를 선택하셨습니다.\n");
-    else if (answer == BOSCH_B)
-        printf("BOSCH 제동장치를 선택하셨습니다.\n");
-}
-
-void selectSteeringSystem(int answer)
-{
-    stack[SteeringSystem_Q] = answer;
-    if (answer == BOSCH_S)
-        printf("BOSCH 조향장치를 선택하셨습니다.\n");
-    else if (answer == MOBIS)
-        printf("MOBIS 조향장치를 선택하셨습니다.\n");
-}
-
-int isValidCheck()
-{
-    if (stack[CarType_Q] == SEDAN && stack[brakeSystem_Q] == CONTINENTAL)
-    {
-        return false;
-    }
-    else if (stack[CarType_Q] == SUV && stack[Engine_Q] == TOYOTA)
-    {
-        return false;
-    }
-    else if (stack[CarType_Q] == TRUCK && stack[Engine_Q] == WIA)
-    {
-        return false;
-    }
-    else if (stack[CarType_Q] == TRUCK && stack[brakeSystem_Q] == MANDO)
-    {
-        return false;
-    }
-    else if (stack[brakeSystem_Q] == BOSCH_B && stack[SteeringSystem_Q] != BOSCH_S)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-    return true;
 }
 
 void runProducedCar(ICar* car)
